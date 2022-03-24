@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -16,4 +17,6 @@ public class SecteurActivite {
     )
     private Long id;
     private String nom;
+    @ManyToMany(mappedBy = "secteurs")
+    private List<Cooperative> cooperatives;
 }

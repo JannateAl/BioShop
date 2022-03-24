@@ -17,12 +17,18 @@ public class TestClass {
                     1,
                     "Argan",
                     50,
-                    300);
+                    300,
+                    "daze",
+                    123,
+                    "dazd");
             Produit prod2 = new Produit(
                     2,
                     "Olive oil",
                     30,
-                    250);
+                    250,
+                    "daze",
+                    123,
+                    "dazd");
             produitRepository.save(prod1);
             produitRepository.save(prod2);
         };
