@@ -15,7 +15,7 @@ public class Region {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private Long id;
+    private int id;
     private String nom;
     @OneToMany(mappedBy = "region")
     private List<Cooperative> cooperatives;

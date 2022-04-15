@@ -1,5 +1,6 @@
 package com.example.BioShop.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,15 +9,16 @@ import java.util.List;
 
 @Entity
 @Table
-@Getter @Setter
+@Data
 public class MatierePremiere {
 
     @Id
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
+            strategy = GenerationType.AUTO
     )
-    private Long id;
+    private int id;
     private String nom;
-    @ManyToMany(mappedBy = "matieres")
-    private List<Produit> produits;
+
+    @OneToMany(mappedBy = "matierePremiere")
+    private List<Composant> composantList;
 }
