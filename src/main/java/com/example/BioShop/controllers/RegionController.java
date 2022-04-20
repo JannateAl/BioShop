@@ -23,4 +23,9 @@ public class RegionController {
     public Region createRegion(@RequestBody Region region) {
         return regionRepository.save(region);
     }
+
+    @PostMapping("/{id}/delete")
+    public void deleteCategorie(@PathVariable("id") Long id) {
+        regionRepository.deleteById(id);
+    }
 }

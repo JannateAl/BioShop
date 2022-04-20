@@ -68,4 +68,10 @@ public class CooperativeController {
        return "indexCooperative";
     }
 
+
+    @GetMapping(path="/{region}/region")
+    public List<Cooperative> getCooperativesByRegion(@PathVariable("region") String nom) {
+        return cooperativeService.findCooperativeByRegion(nom);
+    }
+
 }

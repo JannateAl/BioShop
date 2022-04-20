@@ -12,6 +12,7 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -99,6 +100,17 @@ public class ProduitController {
         return "indexProduit";
     }
 
+    @GetMapping(path = "/cooperative/{cooperative}/categorie/{categorie}")
+    public List<Produit> getProduitsParCooperativeAndCategorie(@PathVariable("categorie") String categorieNom,
+                                                               @PathVariable("cooperative") String cooperativeNom) {
+
+        return produitService.getProduitbyCooperativeAndCategorie(categorieNom,cooperativeNom);
+    }
+
+    @GetMapping(path="/region/{region}")
+    public List<Produit> getProduitsParRegion(@PathVariable("region") String nom) {
+        return produitService.getProduitsByRegion(nom);
+    }
 
 
 }

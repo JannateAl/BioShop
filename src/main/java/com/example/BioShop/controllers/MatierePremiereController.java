@@ -24,5 +24,9 @@ public class MatierePremiereController {
         return matierePremiereRepository.save(matierePremiere);
     }
 
+    @PostMapping("/{id}/delete")
+    public void deleteCategorie(@PathVariable("id") Long id) {
+        matierePremiereRepository.deleteById(id);
+    }
 
 }

@@ -24,4 +24,9 @@ public class SecteurActiviteController {
     public SecteurActivite createSecteur(@RequestBody SecteurActivite secteurActivite) {
         return secteurActiviteRepository.save(secteurActivite);
     }
+
+    @PostMapping("/{id}/delete")
+    public void deleteCategorie(@PathVariable("id") Long id) {
+        secteurActiviteRepository.deleteById(id);
+    }
 }

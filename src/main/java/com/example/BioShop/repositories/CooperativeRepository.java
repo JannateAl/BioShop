@@ -18,6 +18,8 @@ public interface CooperativeRepository extends JpaRepository<Cooperative, Long> 
     @Query(value = "select * from cooperative  where idsecteur = :idSecteur", nativeQuery = true)
     List<Cooperative> findCooperativeBySecteurActivite(@Param(value = "idSecteur") int idSecteur);
 
+    public List<Cooperative> findCooperativeByRegionNom(String nom);
+
 }
 
 

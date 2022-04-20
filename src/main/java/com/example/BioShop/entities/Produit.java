@@ -27,4 +27,8 @@ public class Produit {
     @ManyToOne
     @JoinColumn(name = "idcooperative")
     private Cooperative cooperative;
+
+    @ManyToOne
+    @JoinColumn(name = "idcategorie")
+    private Categorie categorie;
 }
