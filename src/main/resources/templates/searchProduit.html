@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste Produits</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Liste Produits</h1>
+    <div class="row">
+
+        <div style="margin-top: 80px; margin-bottom: 40px; margin-left: 0; margin-right: auto;" >
+            <a class="btn btn-primary" th:href = "@{/ajouterProduit}">Nouveau Produit</a>
+        </div>
+            <div class="form-inline" style="margin-top: 80px; margin-bottom: 40px; margin-right: auto; margin-left: auto;" >
+                <form action="#" class="form-horizontal" th:action="@{/searchProduitByComposant}"  method="post">
+                    <div class="col-sm-12">
+                        <select style="width: 300px" class="form-control" id="matierePremiere" name="matierePremiere" multiple="multiple">
+                            <option th:each="matiere : ${matieresPremieres}" th:value="${matiere.nom}" th:text="${matiere.nom}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="form-inline" style="margin-top: 80px; margin-bottom: 40px;" >
+                <form action="#" class="form-horizontal" th:action="@{/searchProduitByName}"  method="post">
+                    <div class="col-sm-12">
+                        <input type="text" name="nomProduit" class="form-control" placeholder="Entrer le nom du produit">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+
+                </form>
+            </div>
+    </div>
+    <table class="table">
+        <thead>
+           <tr>
+               <th>Designation</th>
+               <th>Prix</th>
+               <th>Quantite</th>
+               <th>Action</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${produit.nom}"></td>
+                <td th:text="${produit.prix}"></td>
+                <td th:text="${produit.quantite}"></td>
+                <td>
+                    <a th:href="@{/updateProduit/{id}(id=${produit.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/deleteProduit/{id}(id=${produit.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+
+    $('#matierePremiere').select2({
+        placeholder: "Selectionner les matieres premieres",
+        allowClear: true
+    });
+</script>
+</body>
+</html>
