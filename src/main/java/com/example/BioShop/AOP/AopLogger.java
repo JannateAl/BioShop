@@ -17,10 +17,9 @@ public class AopLogger {
     private static final Logger logger = LogManager.getLogger(AopLogger.class);
 
 
-   /* @AfterReturning(pointcut = "execution(* * ..controllers.*.create*(..))",returning = "object")
+    @AfterReturning(pointcut = "execution(* * ..controllers.*.create*(..)) && !execution(* * ..controllers.Authentication.create*(..))",returning = "object")
     public void afterCreating(JoinPoint joinPoint,Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        if (joinPoint.getSignature().toString().split("create")[1].split("\\(")[0] != "AuthenticationToken") {
             Long Id = (Long) object.getClass().getMethod("getId").invoke(object);
 
             String Nom = (String) object.getClass().getMethod("getNom").invoke(object);
@@ -28,8 +27,7 @@ public class AopLogger {
             String message = joinPoint.getSignature().toString().split(" ")[0] + " created : " + " id = " + Id + "; nom = " + Nom;
 
             logger.warn(message);
-        }
-    }*/
+    }
 
     @Before("execution(* * ..controllers.*.delete*(..) ) && args(id,..)")
     public void beforeDeleting(JoinPoint joinPoint, Long id){
